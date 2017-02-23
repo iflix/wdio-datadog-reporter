@@ -25,14 +25,22 @@ Instructions on how to install `WebdriverIO` can be found [here](http://webdrive
 
 ## Configuration
 
-Following code shows the default wdio test runner configuration. Just add `'datadog'` as reporter
-to the array.
+Following code shows the default wdio test runner configuration. Just add `'datadog'` as reporter to the array and configuration for that:
 
 ```js
 // wdio.conf.js
 module.exports = {
   // ...
   reporters: ['datadog'],
+  reporterOptions: {
+    datadog: {
+      apiKey: '...', // datadog API KEY
+      appKey: '...', // datadog APP KEY
+      eventTitle: process.env.STAGEPLAY_DATADOG_EVENT_TITLE
+      devices: ['ios', 'chrome'], // using to mark as tags in datadog
+      testEnvironment: 'saucelabs', // local or undefined
+    }
+  }
   // ...
 };
 ```
