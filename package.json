@@ -1,6 +1,6 @@
 {
   "name": "@iflix/wdio-datadog-reporter",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A WebdriverIO plugin to report into Datadog.",
   "main": "dist/reporter.js",
   "scripts": {
