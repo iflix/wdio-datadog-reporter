@@ -38,7 +38,6 @@ module.exports = {
       appKey: '...', // datadog APP KEY
       eventTitle: '...', // datadog event name
       devices: ['ios', 'chrome'], // using to mark as tags in datadog
-      testEnvironment: 'saucelabs', // local or undefined
     }
   }
   // ...

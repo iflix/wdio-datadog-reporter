@@ -29,7 +29,7 @@ class DatadogReporter extends events.EventEmitter {
                   message: test.error.message
                 }
 
-                if (this.options.testEnvironment === 'saucelabs') {
+                if (this.config.services.indexOf('sauce') !== -1) {
                   error.detailsUrl = `https://saucelabs.com/tests/${runnerInfo.sessionID}`
                 }
 
