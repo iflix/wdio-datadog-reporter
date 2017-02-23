@@ -36,7 +36,7 @@ module.exports = {
     datadog: {
       apiKey: '...', // datadog API KEY
       appKey: '...', // datadog APP KEY
-      eventTitle: process.env.STAGEPLAY_DATADOG_EVENT_TITLE
+      eventTitle: '...', // datadog event name
       devices: ['ios', 'chrome'], // using to mark as tags in datadog
       testEnvironment: 'saucelabs', // local or undefined
     }
