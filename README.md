@@ -9,7 +9,7 @@ The easiest way is to keep `@iflix/wdio-datadog-reporter` as a Dependency in you
 
 ```json
 {
-  "devDependencies": {
+  "dependencies": {
     "@iflix/wdio-datadog-reporter": "~0.0.x"
   }
 }
