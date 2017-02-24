@@ -29,9 +29,11 @@ Following code shows the default wdio test runner configuration. Just add `'data
 
 ```js
 // wdio.conf.js
+import datadogReporter from '@iflix/wdio-datadog-reporter'
+
 module.exports = {
   // ...
-  reporters: ['datadog'],
+  reporters: [datadogReporter],
   reporterOptions: {
     datadog: {
       apiKey: '...', // datadog API KEY
