@@ -13,7 +13,7 @@ class DatadogReporter extends events.EventEmitter {
     this.options = reporterOptions
 
     this.on('runner:end', (res) => {
-      const errors = []
+      let errors = ''
       for (const runnerId in this.baseReporter.stats.runners) {
         const runnerInfo = this.baseReporter.stats.runners[runnerId]
         for (const specId in runnerInfo.specs) {
@@ -23,17 +23,17 @@ class DatadogReporter extends events.EventEmitter {
             for (const testName in suite.tests) {
               const test = suite.tests[testName]
               if (test.error) {
-                const error = {
-                  platform: runnerInfo.capabilities.browserName || runnerInfo.capabilities.platformName,
-                  testName,
-                  message: test.error.message
-                }
+                let error = `
+                  Platform: ${runnerInfo.capabilities.browserName || runnerInfo.capabilities.platformName}\n
+                  Test: ${testName}\n
+                  Message: ${test.error.message}
+                `
 
                 if (this.config.services.indexOf('sauce') !== -1) {
-                  error.detailsUrl = `https://saucelabs.com/tests/${runnerInfo.sessionID}`
+                  error = `${error}\nSauceLab report: https://saucelabs.com/tests/${runnerInfo.sessionID}`
                 }
 
-                errors.push(error)
+                errors = `${errors}\n${error}`
               }
             }
           }
@@ -66,7 +66,7 @@ class DatadogReporter extends events.EventEmitter {
 
       dogapi.initialize(params)
       let title = this.options.eventTitle
-      let text = JSON.stringify(errors)
+      let text = `%%% ${errors}`
       let properties = {
         tags: this.options.devices || [],
         alert_type: 'error'
