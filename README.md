@@ -1,11 +1,13 @@
 WDIO Datadog reporter
-==========
+=====================
 
-> A WebdriverIO plugin to report into Datadog.
+> A [WebdriverIO](http://webdriver.io) plugin to report test run failures to [Datadog](www.datadoghq.com).
 
-## Installation
+Installation
+------------
 
-The easiest way is to keep `@iflix/wdio-datadog-reporter` as a Dependency in your `package.json`.
+The easiest way is to list `'@iflix/wdio-datadog-reporter'`
+as dependency in your `package.json`.
 
 ```json
 {
@@ -15,17 +17,29 @@ The easiest way is to keep `@iflix/wdio-datadog-reporter` as a Dependency in you
 }
 ```
 
-You can simple do it by:
+You can do it with `npm`:
 
 ```bash
 npm install @iflix/wdio-datadog-reporter --save
 ```
 
-Instructions on how to install `WebdriverIO` can be found [here](http://webdriver.io/guide/getstarted/install.html).
+or `yarn`
 
-## Configuration
+```bash
+yarn add @iflix/wdio-datadog-reporter
+```
 
-Following code shows the default wdio test runner configuration. Just add `'datadog'` as reporter to the array and configuration for that:
+Configuration
+-------------
+
+Following example shows typical [WebdriverIO](http://webdriver.io)
+`'wdio.conf.js'` test runner configuration.
+
+You have to import `'@iflix/wdio-datadog-reporter'` package
+into variable and list it in `'reporters:'` section.
+
+Using reporter name string (`'datadog'`) will not work,
+as WebdriverIO doesn't do plugin discovery in scoped packages.
 
 ```js
 // wdio.conf.js
@@ -33,12 +47,12 @@ import datadogReporter from '@iflix/wdio-datadog-reporter'
 
 module.exports = {
   // ...
-  reporters: [datadogReporter],
+  reporters: ['spec', datadogReporter],
   reporterOptions: {
     datadog: {
-      apiKey: '...', // datadog API KEY
-      appKey: '...', // datadog APP KEY
-      eventTitle: '...', // datadog event name
+      apiKey: '...', // Datadog API key,
+      appKey: '...', // Datadog Application key
+      eventTitle: '...', // Datadog event name
       devices: ['ios', 'chrome'], // using to mark as tags in datadog
     }
   }
@@ -46,6 +60,10 @@ module.exports = {
 };
 ```
 
+You can check your [Datadog account settings](https://app.datadoghq.com/account/settings#api)
+in order to find right API and Application key for your reporting.
+An event title shold correspond to event name you're looking for in a Datadog Monitor.
+
 ----
 
-For more information on WebdriverIO see the [homepage](http://webdriver.io).
+More information about WebdriverIO framework can be found here:  [http://webdriver.io](http://webdriver.io).

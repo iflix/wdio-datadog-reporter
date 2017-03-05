@@ -1,12 +1,10 @@
 {
   "name": "@iflix/wdio-datadog-reporter",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A WebdriverIO plugin to report into Datadog.",
   "main": "dist/reporter.js",
   "scripts": {
     "clean": "rimraf dist",
-    "test": "cross-env BABEL_ENV=commonjs ava --verbose",
-    "cover": "cross-env BABEL_ENV=commonjs istanbul cover _mocha -- --compilers js:babel-register --recursive",
     "lint": "eslint src test",
     "build": "cross-env BABEL_ENV=commonjs babel src --out-dir dist",
     "prepublish": "npm run build"
@@ -14,9 +12,12 @@
   "files": [
     "dist/"
   ],
+  "bug": [
+    "https://teamiflix.atlassian.net/projects/QA/issues/"
+  ],
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://github.com:iflix-letsplay/wdio-datadog-reporter.git"
   },
   "keywords": [
     "iflix",
@@ -25,7 +26,6 @@
     "datadog"
   ],
   "devDependencies": {
-    "ava": "^0.17.0",
     "babel": "^6.5.2",
     "babel-cli": "^6.14.0",
     "babel-eslint": "^7.0.0",
@@ -35,21 +35,10 @@
     "cross-env": "^3.0.0",
     "eslint": "^3.6.0",
     "eslint-plugin-import": "^2.0.0",
-    "eslint-plugin-jsx-a11y": "^2.2.2",
-    "eslint-plugin-react": "^6.3.0",
-    "istanbul": "^1.0.0-alpha",
-    "mocha": "^3.0.2",
     "rimraf": "^2.5.4",
     "standard": "^8.6.0"
   },
   "dependencies": {
     "dogapi": "^2.6.0"
-  },
-  "ava": {
-    "concurrency": 5,
-    "require": [
-      "babel-register"
-    ],
-    "babel": "inherit"
   }
 }
