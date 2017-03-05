@@ -17,7 +17,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com:iflix-letsplay/wdio-datadog-reporter.git"
+    "url": "git+https://github.com/iflix-letsplay/wdio-datadog-reporter.git"
   },
   "keywords": [
     "iflix",
